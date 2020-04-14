@@ -1,0 +1,16 @@
+import smtplib
+from email.message import EmailMessage #email module https://docs.python.org/3/library/email.examples.html
+
+email = EmailMessage()
+email['from'] = 'Gordo'
+email['to'] = 'iamvice@gmail.com'
+email['subject'] = 'Abarajame la banera'
+
+email.set_content('nene')
+
+with smtplib.SMTP(host='smtp.gmail.com', port=587) as smtp:
+	smtp.ehlo()
+	smtp.starttls() #encription mechanism
+	smtp.login('mathproteacher@gmail.com', 'puchica123')
+	smtp.send_message(email)
+	print('all good!')
